@@ -44,6 +44,8 @@ public:
    void display(); 	// Display the reference on cout, example output: John 3:16
    // Your version of display must show the book name
    // corresponding to the stored book number.
+
+   string getBookName(int number); //return book name 
 };
 
 #endif //Ref_H

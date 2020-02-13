@@ -36,7 +36,6 @@ const Verse Bible::lookup(Ref ref, LookupResult& status) {
 		}
 	}
 	else {
-	
 
 			if (currentRef == ref) {
 				aVerse = Verse(currentLine);
@@ -44,12 +43,7 @@ const Verse Bible::lookup(Ref ref, LookupResult& status) {
 				return(aVerse);
 			}
 
-
-
-
 	}
-
-	
 
 	isOpen = true;
 
@@ -82,12 +76,6 @@ const Verse Bible::lookup(Ref ref, LookupResult& status) {
 				status = NO_VERSE;
 				return(aVerse);
 			}
-		
-				
-			
-
-			
-
 			
 	} while (!instream.fail());
 
@@ -123,14 +111,10 @@ const Ref Bible::next(const Ref ref, LookupResult& status) {
 			currentRef = ref4;
 			return ref4;
 		}
-	}
-	 
+	}	 
 
 	Ref ref5;
 	return ref5;
-
-
-	
 };
 
 // OPTIONAL: Return the reference before the given ref
@@ -145,10 +129,10 @@ const string Bible::error(LookupResult status) {
 	}
 	
 	if (status == NO_CHAPTER) {
-		return "Could not find the chapter \n";
+		return "does not exist!";
 	}
 	if (status == NO_VERSE) {
-		return "Could not found the verse \n";
+		return "does not exist!";
 	}
 	if(status == OTHER){
 		return "Could not determine the error \n";
@@ -161,4 +145,8 @@ const string Bible::error(LookupResult status) {
 
 void Bible::display() {
 	cout << "Bible file: " << infile << endl;
+}
+
+Ref Bible::getCurrentRef() {//return current ref to be used when displaying book names
+	return currentRef;
 }

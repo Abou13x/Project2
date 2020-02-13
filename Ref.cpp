@@ -76,5 +76,10 @@ void Ref::display() { 	// Display Reference
 	else {
 		name = bookName[count];
 	}
-	cout << name << ":" << chap << ":" << verse;
+	cout <<verse;
+	//cout << name << ":" << chap << ":" << verse;
+}
+
+string Ref::getBookName(int number) {
+	return bookName[number - 1];
 }

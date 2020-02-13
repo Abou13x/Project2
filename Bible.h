@@ -46,5 +46,6 @@ class Bible {	// A class to represent a version of the bible
    const string error(LookupResult status);
    // Show the name of the bible file on cout
    void display();
+   Ref getCurrentRef();
 };
 #endif //Bible_H

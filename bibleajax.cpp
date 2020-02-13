@@ -72,7 +72,7 @@ int main() {
   
   /* TO DO: OTHER INPUT VALUE CHECKS ARE NEEDED ... but that's up to you! */
 
-
+  //checks for validity of chapter number
 
   bool validVerseNumber = false;
 
@@ -92,7 +92,7 @@ int main() {
 
 
 
-  //book
+  //checks for validity of book number
 
   bool validBookNumber = false;
 
@@ -129,42 +129,63 @@ int main() {
 		  verseN = 1;
 	  }
 
-	  
 	  Ref ref(bookNumber, chapterNumber, verseNumber);
 
 	  cout << "Search Type: <b>" << **st << "</b>" << endl;
 	  cout << "<p>Your result: </p>"<< endl;
 
+	  int currentChapterNumber = ref.getChap();//will store the give chapter before it is updated
+
+	  cout << ref.getBookName(bookNumber)<<" " <<ref.getChap();
+
 	  for (int i = 0; i < verseN; i++) {
 		  verse2 = webBible.lookup(ref, result);
 
-		  if (result != SUCCESS) {
-			  cout << "<p>Invalid Input: <em>" << webBible.error(result) << "</em></p>" << endl;
+		  if (result != SUCCESS) {//displays error massage if result is not successful
+			  if (result == NO_CHAPTER) {
+				  cout << "<p>Invalid Input: <em>" << ref.getBookName(bookNumber)<<" chapter " <<currentChapterNumber<<" "<< webBible.error(result) << "</em></p>" << endl;
+			  }
+			  if (result == NO_VERSE) {
+				  cout << "<p>Invalid Input: <em>" << ref.getBookName(bookNumber) << " verse " << verseNumber << " " << webBible.error(result) << "</em></p>" << endl;
+			  }
+			 // cout << "<p>Invalid Input: <em>" << webBible.error(result) <<ref.getBookName(bookNumber)<< "</em></p>" << endl;
 			  exit(result);
 		  }
 
-		  if (validInput == true && validVerseNumber == true && result == SUCCESS && validBookNumber == true) {
-			  
-			  cout << "<p>" << endl;
-			  verse2.display();
-			  cout << "</p>" << endl;
 
-		  }
+				  /* SEND BACK THE RESULTS
+		   * Finally we send the result back to the client on the standard output stream
+		   * in HTML text format.
+		   * This string will be inserted as is inside a container on the web page,
+		   * so we must include HTML formatting commands to make things look presentable!
+		   */
+
+		  if (validInput == true && validVerseNumber == true && result == SUCCESS && validBookNumber == true) {
 		
 
+			  if (currentChapterNumber == webBible.getCurrentRef().getChap()) {
+				  cout << "<p>" << endl;
+				  verse2.display();
+				  cout << "</p>" << endl;
+			  }
+			  else {
+				  if (currentChapterNumber != webBible.getCurrentRef().getChap()) {
+					  currentChapterNumber = webBible.getCurrentRef().getChap();
+					  cout << ref.getBookName(bookNumber) <<" " << ref.getChap();
+				  }
+
+				  cout << "<p>" << endl;
+				  verse2.display();
+				  cout << "</p>" << endl;
+			  }
+
+		  }
+	
 		  ref = webBible.next(ref, result);
 	  }
 
   }
   
-
-
-  /* SEND BACK THE RESULTS
-   * Finally we send the result back to the client on the standard output stream
-   * in HTML text format.
-   * This string will be inserted as is inside a container on the web page, 
-   * so we must include HTML formatting commands to make things look presentable!
-   */
   
   return 0;
 }
