@@ -64,6 +64,25 @@ bool Ref::operator==(const Ref r) {
 		return false;
 	}
 }
+
+bool Ref::operator<(const Ref r) const {
+
+	if (book < r.book ){
+		return true;
+	}
+	else if ( book == r.book && chap < r.chap ) {
+		return true;
+	}
+	else if (book == r.book && chap == r.chap && verse < r.verse) {
+		return true;
+	}
+	else {
+		return false;
+	}
+
+}
+
+
 // OPTIONAL: define < and > comparisons
 
 // TO DO: modify display function to show book name instead of book number

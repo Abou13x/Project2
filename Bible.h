@@ -15,6 +15,7 @@
 #include <string>
 #include <stdio.h>
 #include <stdlib.h>
+#include <map>
 using namespace std;
 
 // status codes to be returned when looking up a reference
@@ -29,6 +30,7 @@ class Bible {	// A class to represent a version of the bible
    // the current line and/or reference when scanning the file
    Ref currentRef;
    string currentLine;
+   map<Ref, int> index;
 
  public:
    Bible();	// Default constructor
@@ -47,5 +49,6 @@ class Bible {	// A class to represent a version of the bible
    // Show the name of the bible file on cout
    void display();
    Ref getCurrentRef();
+   int buildTextIndex(string filename);
 };
 #endif //Bible_H

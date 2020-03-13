@@ -18,7 +18,7 @@ USER= abodiomande
 CC= g++
 CFLAGS= -g -std=c++11
 
-all:	bibleajax.cgi PutCGI PutHTML
+all:	#bibleajax.cgi PutCGI PutHTML
 
 # TO DO: For bibleajax.cgi, add dependencies to include
 # compiled classes from Project 1 to be linked into the executable program
