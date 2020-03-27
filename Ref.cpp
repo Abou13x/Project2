@@ -50,9 +50,9 @@ Ref::Ref(const int b, const int c, const int v) { 	// Construct Ref from three i
 }
 
 // Accessors
-int Ref::getBook() {return book;}	 // Access book number
-int Ref::getChap() {return chap;}	 // Access chapter number
-int Ref::getVerse() {return verse;}; // Access verse number
+int Ref::getBook() const{return book;}	 // Access book number
+int Ref::getChap() const{return chap;}	 // Access chapter number
+int Ref::getVerse()const {return verse;}; // Access verse number
 
 // TO DO: implement comparison functions
 // REQUIRED: == comparison

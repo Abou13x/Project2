@@ -1,5 +1,4 @@
 <!-- bibleajax.html
- -- James Skon Feb 21, 2015
  -- Bob Kasper January 2020: corrected to check for missing search type,
  --     added comments
  -- Mount Vernon Nazarene University
@@ -55,7 +54,7 @@ function getresponse () {
 		return;
 	}
 	// NOTE: This page must be loaded from cs.mvnu.edu to avoid a cross-origin request violation.
-	XMLHttp.open("GET", "/class/csc3004/abodiomande/cgi-bin/bibleajax.cgi?"
+	XMLHttp.open("GET", "/class/csc3004/abodiomande/cgi-bin/bibleLookupClient?"
 		+ "search_type=" + searchType.value
 		+ "&book=" + document.getElementById('book').value
 		+ "&chapter=" + document.getElementById('chapter').value

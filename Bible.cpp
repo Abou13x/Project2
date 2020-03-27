@@ -194,7 +194,7 @@ const Ref Bible::next(const Ref ref, LookupResult& status) {
 
 			cerr << "Error - can't open input file: " << infile << endl;
 			status = OTHER;
-			return verse2;
+			return ref2;
 		}
 
 
@@ -252,17 +252,17 @@ const string Bible::error(LookupResult status) {
 
 	if (status == NO_BOOK) {
 		
-		return "Could not find the book \n";
+		return "Could not find the book ";
 	}
 	
 	if (status == NO_CHAPTER) {
-		return "The chapter does not exist! \n";
+		return "The chapter does not exist!";
 	}
 	if (status == NO_VERSE) {
-		return "The verse does not exist!\n";
+		return "The verse does not exist! ";
 	}
 	if(status == OTHER){
-		return "Could not determine the error \n";
+		return "Could not determine the error ";
 	}
 	else {
 		cout << "Strange!!!!!!";
